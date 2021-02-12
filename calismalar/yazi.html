@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Yellowtail&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Piedra&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Subrayada&display=swap" rel="stylesheet">
+    <style>
+        textarea {
+            resize: none;
+        }
+        h3 {
+            display: inline;
+        }
+        #font{
+            position: fixed;
+        }
+        #range{
+            position: fixed;
+            margin-left: 206px;
+        }
+        #renk{
+            position: fixed;
+            margin-left: 492px;
+        }
+        #border{
+            position: fixed;
+            margin-left: 15px;
+        }
+        #range2{
+            position: fixed;
+            margin-left: 206px;
+        }
+        #border_renk{
+            position: fixed;
+            margin-left: 490px;
+        }
+        #arkaplan_renk{
+            margin-left: 633px;
+        }
+        .sonuc1 {
+        resize: none;
+        width: 710px;
+        height: 210px;
+        position: absolute;
+        top: 370px;
+    }
+    </style>
+</head>
+<body style="background-color: #d66565">
+
+    <div class="metin_alani">
+        <br><h3 style="color: #3f3c3b;">Metni Giriniz:</h3><br>
+
+        <textarea placeholder="Metni Giriniz" id="text" class="text1" onkeyup="getText(this.value)" cols="100" rows="8"></textarea><br><br>
+    </div>
+
+    <h3 class="yazi_stili" style="color: #3f3c3b;">Yazı Tipi</h3>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <h3 style="color: #3f3c3b;">Yazı Boyutu</h3>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <h3 style="color: #3f3c3b;">Yazı Rengi</h3><br>
+    <div id="font">
+        <select onchange="getCombo(this)">
+            <option class="font0">Varsayılan</option>
+            <option class="font1">Yellowtail</option>
+            <option class="font2">Pangolin</option>
+            <option class="font3">Krona One</option>
+            <option class="font4">Piedra</option>
+            <option class="font5">Montserrat Subrayada</option>
+        </select>
+    </div>
+    
+    <div id="range">
+        <input type="range" min="0" max="75" onchange="changeFontSize(this)">
+    </div>
+    
+    <div id="renk">
+        <input type="color" id="favcolor" name="favcolor" onchange="changeColor(this.value)">
+    </div><br>
+
+
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+    <h3 style="color: #3f3c3b;">Arkaplan Rengi</h3><br>
+
+    <div id="arkaplan_renk">
+        <input type="color" id="favcolor" name="favcolor" onchange="changeBackgroundColor(this.value)">
+    </div>
+
+    
+    
+    <h3 style="color: #3f3c3b;">Border Stili</h3>
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+    <h3 style="color: #3f3c3b;">Border Kalınlığı</h3>
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+    <h3 style="color: #3f3c3b;">Border Rengi</h3><br>
+
+    <div id="border">
+        <select onchange="changeBorderStyle(this.value)">
+            <option class="border2">Solid</option>
+            <option class="border1">Dotted</option>
+            <option class="border3">Inset</option>
+
+        </select>
+    </div>
+    
+    <div id="range2">
+        <input type="range" min="0" max="10" onchange="changeBorderWidth(this.value)">
+    </div>
+    
+
+    <div id="border_renk">
+        <input type="color" id="favcolor" name="favcolor" onchange="changeBorderColor(this.value)">
+    </div><br><br>
+
+    <h3 style="color: #3f3c3b;">Sonuç:</h3><br>
+    <div id="metin_alani">
+        <textarea id="sonuc" class="sonuc1"></textarea>
+    </div>
+    <script>
+        function metin_renk_degis(){
+            document.getElementById("sonuc").style.color=document.getElementById("yazirenk").value;
+        }
+        
+        function getText(value) {
+            document.getElementById('sonuc').value = value;
+        }
+
+        function getCombo(selectObject) {
+            var value = selectObject.value;
+            document.getElementById('sonuc').style.fontFamily = value;
+        }
+
+        function changeFontSize(object) {
+            var value = object.value + "px";
+            document.getElementById('sonuc').style.fontSize = value;
+        }
+
+        function changeColor(value) {
+            document.getElementById('sonuc').style.color = value;
+        }
+
+        function changeBorderStyle(value) {
+            document.getElementById('sonuc').style.borderStyle = value;
+        }
+
+        function changeBorderWidth(value) {
+            document.getElementById('sonuc').style.borderWidth = value + "px";
+        }
+
+        function changeBorderColor(value) {
+            document.getElementById('sonuc').style.borderColor = value;
+        }
+
+        function changeBackgroundColor(value) {
+            document.getElementById('sonuc').style.backgroundColor = value;
+        }
+    </script>
+</body>
+</html>
